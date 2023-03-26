@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item
-		android:id="@+id/dashboard"
+		android:id="@+id/navigation_dashboard"
 		android:enabled="true"
 		android:icon="@drawable/view_comfy_alt"
 		android:title="@string/first_fragment_label"/>
 	<item
-		android:id="@+id/block_list"
+		android:id="@+id/navigation_block_list"
 		android:enabled="true"
 		android:icon="@drawable/app_blocking"
 		android:title="@string/second_fragment_label"/>
 	<item
-		android:id="@+id/focus_mode"
-		android:enabled="false"
+		android:id="@+id/navigation_focus_mode"
+		android:enabled="true"
 		android:icon="@drawable/bubble_chart"
 		android:title="@string/third_fragment_label"/>
 </menu>

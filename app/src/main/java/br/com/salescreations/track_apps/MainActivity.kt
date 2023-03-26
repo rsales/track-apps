@@ -1,25 +1,27 @@
 package br.com.salescreations.track_apps
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+//import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
+//import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
+//import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import androidx.navigation.fragment.findNavController
+//import android.view.Menu
+//import android.view.MenuItem
+//import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import br.com.salescreations.track_apps.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-	private lateinit var appBarConfiguration: AppBarConfiguration
+//	private lateinit var appBarConfiguration: AppBarConfiguration
 	private lateinit var binding: ActivityMainBinding
 
 	override fun onCreate(savedInstanceState: Bundle?) {
-		WindowCompat.setDecorFitsSystemWindows(window, false)
+//		WindowCompat.setDecorFitsSystemWindows(window, false)
 		super.onCreate(savedInstanceState)
 
 		binding = ActivityMainBinding.inflate(layoutInflater)
@@ -27,9 +29,21 @@ class MainActivity : AppCompatActivity() {
 
 		setSupportActionBar(binding.toolbar)
 
+		val bottomNavigation: BottomNavigationView = binding.bottomNavigation
+
 		val navController = findNavController(R.id.nav_host_fragment_content_main)
-		appBarConfiguration = AppBarConfiguration(navController.graph)
+		// Passing each menu ID as a set of Ids because each
+		// menu should be considered as top level destinations.
+		val appBarConfiguration = AppBarConfiguration(
+			setOf(
+				R.id.navigation_dashboard, R.id.navigation_block_list, R.id.navigation_focus_mode
+			)
+		)
 		setupActionBarWithNavController(navController, appBarConfiguration)
+		bottomNavigation.setupWithNavController(navController)
+
+//		appBarConfiguration = AppBarConfiguration(navController.graph)
+//		setupActionBarWithNavController(navController, appBarConfiguration)
 	}
 
 //	override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -38,22 +52,22 @@ class MainActivity : AppCompatActivity() {
 //		return true
 //	}
 
-	override fun onOptionsItemSelected(item: MenuItem): Boolean {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		return when (item.itemId) {
-			R.id.dashboard -> true
-			R.id.focus_mode -> true
-			R.id.focus_mode -> true
+//	override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//		// Handle action bar item clicks here. The action bar will
+//		// automatically handle clicks on the Home/Up button, so long
+//		// as you specify a parent activity in AndroidManifest.xml.
+//		return when (item.itemId) {
+//			R.id.dashboard -> true
+//			R.id.block_list -> true
+//			R.id.focus_mode -> true
+//
+//			else -> super.onOptionsItemSelected(item)
+//		}
+//	}
 
-			else -> super.onOptionsItemSelected(item)
-		}
-	}
-
-	override fun onSupportNavigateUp(): Boolean {
-		val navController = findNavController(R.id.nav_host_fragment_content_main)
-		return navController.navigateUp(appBarConfiguration)
-				|| super.onSupportNavigateUp()
-	}
+//	override fun onSupportNavigateUp(): Boolean {
+//		val navController = findNavController(R.id.nav_host_fragment_content_main)
+//		return navController.navigateUp(appBarConfiguration)
+//				|| super.onSupportNavigateUp()
+//	}
 }
